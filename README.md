@@ -23,5 +23,11 @@ Make sure you have the following installed on your machine:
 ### Installing
 
 1. Clone the repository to your local machine:
-   ```bash
-   git clone https://github.com/yourusername/CheckNet-Strategic-Board-Game.git
+   `git clone https://github.com/yourusername/CheckNet-Strategic-Board-Game.git`
+
+2.  Open the project in Android Studio.
+
+3.  Build and run the project on your device or emulator.
+
+### Enjoy playing CheckNet!
+   
