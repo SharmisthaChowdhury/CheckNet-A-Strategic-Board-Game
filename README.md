@@ -4,11 +4,12 @@
 **CheckNet** is a strategic board game inspired by traditional board games with modern twists. This game is designed for players who enjoy tactical challenges and strategic thinking. 
 
 ## Features
-- Two-player game mode for an immersive experience.
-- Simple and intuitive game mechanics.
-- Strategy-driven gameplay with the aim of outsmarting your opponent.
-- Interactive board with easy-to-understand moves.
+- Supports Bluetooth multiplayer (no internet required).
+- Simple, strategy-driven gameplay.
+- Interactive board and intuitive mechanics.
+- Built-in timer for added challenge.
 - Fun and engaging user interface.
+
 
 ## Getting Started
 
