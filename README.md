@@ -30,4 +30,26 @@ Make sure you have the following installed on your machine:
 3.  Build and run the project on your device or emulator.
 
 ### Enjoy playing CheckNet!
+
+## Usage
+- Launch the game and choose the "Play" option.
+- Select a device to play against or connect with another player via Bluetooth.
+- Start making your moves strategically to outsmart your opponent!
+## Contributing
+- If you want to contribute to the development of CheckNet, feel free to fork this repository, make changes, and create pull requests. Here’s how you can contribute:
+
+1. Fork the repository.
+2. Clone your forked repo to your local machine.
+3. Create a new branch for your feature or bugfix:
+`git checkout -b feature-name`
+4. Make changes to the code.
+5. Commit and push your changes
+`git add .`
+`git commit -m "Your commit message`
+`git push origin feature-name
+`
+6. Open a pull request to the main repository.
+
+
+
    
