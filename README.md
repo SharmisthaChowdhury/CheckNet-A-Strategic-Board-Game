@@ -1,1 +1,1 @@
-# CheckNet_-A  Strategic Board-Game
+# CheckNet_ A Strategic Board-Game
