@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.bluetoothconnection">
+
+    <!-- Bluetooth Permissions -->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+    <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/clipart"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/clipart_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:ignore="DuplicateActivity">
+
+        <!-- PlayActivity declaration -->
+        <activity
+            android:name=".PlayActivity"
+            android:exported="true" />
+
+        <!-- MainActivity2 declaration (launcher activity) -->
+        <activity
+            android:name=".MainActivity2"
+            android:exported="true"
+            tools:ignore="MissingClass">
+            <intent-filter tools:ignore="DuplicateActivity">
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- RulesActivity declaration -->
+        <activity
+            android:name=".RulesActivity"
+            android:exported="true" />
+
+        <!-- Netmate activity declaration -->
+        <activity
+            android:name=".Netmate"
+            android:exported="true" />
+
+        <!-- Checknet activity declaration -->
+        <activity
+            android:name=".Checknet"
+            android:exported="true" />
+
+        <!-- Mill activity declaration -->
+        <activity
+            android:name=".Mill"
+            android:exported="true" />
+        <activity
+            android:name=".HelpActivity"
+            android:exported="true" />
+
+    </application>
+
+</manifest>

@@ -1,0 +1,17 @@
+<!-- res/drawable/button_bg.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Gradient Background Color -->
+    <gradient
+        android:startColor="#E4D96A"
+        android:endColor="#B4A243"
+        android:angle="90" /> <!-- Creates a subtle gradient -->
+
+    <!-- Rounded Corners -->
+    <corners android:radius="16dp"/> <!-- Larger rounded corners for a soft look -->
+
+    <!-- Padding for Button Content -->
+    <padding android:left="12dp" android:top="12dp" android:right="12dp" android:bottom="12dp"/>
+
+    <!-- Border -->
+    <stroke android:width="2dp" android:color="#BFA564" /> <!-- Border to enhance button visibility -->
+</shape>

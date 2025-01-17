@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#9B7E53"
+    tools:context=".RulesActivity">
+
+    <!-- Scrollable Content -->
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="25dp"
+            android:background="@drawable/background1">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="639dp"
+                android:background="@drawable/rules_board"
+                android:orientation="vertical"
+
+                android:paddingHorizontal="20dp">
+
+                <TextView
+                    android:id="@+id/rulesTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingBottom="16dp"
+                    android:text="Rules"
+                    android:textColor="#EFD896"
+
+                    android:textSize="30dp"
+                    android:textStyle="bold" />
+
+                <!-- Rules Section -->
+                <TextView
+                    android:id="@+id/rule1"
+                    android:layout_width="308dp"
+                    android:layout_height="75dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="1. Place your nine pieces in the empty points to make a mill of three pieces."
+                    android:textColor="#5F4928"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/rule2"
+                    android:layout_width="304dp"
+                    android:layout_height="108dp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="12dp"
+                    android:gravity="center"
+                    android:text="2. When all 18 pieces are placed on the board, move your pieces to make a mill."
+                    android:textColor="#5F4928"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/rule3"
+                    android:layout_width="287dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="12dp"
+                    android:gravity="center"
+                    android:text="3. Whenever a mill is formed, you can capture one of your opponent's pieces that is not in any mill."
+                    android:textColor="#5F4928"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/rule4"
+                    android:layout_width="302dp"
+                    android:layout_height="81dp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="12dp"
+                    android:gravity="center"
+                    android:text="4. If any player has 3 pieces remaining, they can jump to any empty point on the board."
+                    android:textColor="#5F4928"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/rule5"
+                    android:layout_width="300dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="16dp"
+                    android:gravity="center"
+                    android:text="5. The game ends when a player has two pieces left or cannot make a legal move."
+                    android:textColor="#5F4928"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+            <Button
+                android:id="@+id/case1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/button_bg"
+                android:textColor="#5F4928"
+                android:text="MILL"
+                android:textSize="18sp" />
+
+            <!-- Case 2 Button -->
+            <Button
+                android:id="@+id/case2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/button_bg"
+                android:textColor="#5F4928"
+                android:text="CHECKNET"
+                android:textSize="18sp" />
+
+            <!-- Case 3 Button -->
+            <Button
+                android:id="@+id/case3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/button_bg"
+                android:textColor="#5F4928"
+                android:text="NETMATE"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Back Button -->
+    <ImageButton
+        android:id="@+id/back"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/back"
+        android:contentDescription="Go back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
