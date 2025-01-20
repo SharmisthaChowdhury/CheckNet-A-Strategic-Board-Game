@@ -21,6 +21,9 @@ public class PlayActivity extends AppCompatActivity {
     private Button quitButton; // Quit button
     private static final long TURN_DURATION = 20000; // 20 seconds
     private static final String QUIT_MESSAGE = "QUIT";
+    private int player1Pawns = 0;
+    private int player2Pawns = 0;
+    private static final int MAX_PAWNS = 9;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,12 +72,35 @@ public class PlayActivity extends AppCompatActivity {
             return;
         }
 
+        // Check if the current player has already placed the maximum number of pawns
+        if ((isPlayerTurn && player1Pawns >= MAX_PAWNS) || (!isPlayerTurn && player2Pawns >= MAX_PAWNS)) {
+            Toast.makeText(this, "You have already placed all your pawns!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         stopTurnTimer(); // Stop the timer since the player made a move
+
+        // Update the button state and game state
         updateButtonState(index, true);
         gameState[index] = true;
-        sendGameState();
-        isPlayerTurn = false; // Pass the turn to the opponent
-        startTurnTimer(); // Start the opponent's timer
+
+        // Increment the appropriate player's pawn counter
+        if (isPlayerTurn) {
+            player1Pawns++;
+        } else {
+            player2Pawns++;
+        }
+
+        // Check if all pawns are placed for both players
+        if (player1Pawns == MAX_PAWNS && player2Pawns == MAX_PAWNS) {
+            // Logic for transitioning to the next phase
+            Toast.makeText(this, "All pawns placed! Transitioning to the next phase.", Toast.LENGTH_SHORT).show();
+            // Add your transition logic here
+        }
+
+        sendGameState(); // Send the updated game state
+        isPlayerTurn = !isPlayerTurn; // Pass the turn to the opponent
+        startTurnTimer(); // Start the next player's timer
     }
 
     private void updateButtonState(int index, boolean isLocal) {
