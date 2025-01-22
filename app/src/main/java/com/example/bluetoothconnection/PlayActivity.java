@@ -190,23 +190,34 @@ public class PlayActivity extends AppCompatActivity {
     }
 
     private void resetGame() {
+        // Reset the game state for pawns
         for (int i = 0; i < gameState.length; i++) {
             gameState[i] = false; // Reset game state
         }
 
+        // Reset player pawn counters
+        player1Pawns = 0;
+        player2Pawns = 0;
+
+        // Enable all buttons and reset their appearance
         for (RadioButton button : buttons) {
             button.setEnabled(true);
             button.setBackgroundResource(android.R.color.transparent); // Clear background
             button.setChecked(false); // Unselect the button
         }
 
+        // Set the first player as the starting player
         isPlayerTurn = true;
+
+        // Stop and restart the turn timer
         stopTurnTimer();
         startTurnTimer();
 
+        // Update UI
         Toast.makeText(this, "Game reset. New game started!", Toast.LENGTH_SHORT).show();
         replayButton.setEnabled(true);
     }
+
 
     private void startTurnTimer() {
         if (turnTimer != null) {
