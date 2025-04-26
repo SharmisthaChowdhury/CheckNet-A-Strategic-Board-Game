@@ -1,3 +1,29 @@
 <resources>
-    <string name="app_name">Game</string>
+    <string name="app_name">BluetoothConnection</string>
+    <string name="list_listen_devices"><![CDATA[List & Listen Devices]]></string>
+    <string name="slot_1">Slot 1</string>
+    <string name="slot_2">Slot 2</string>
+    <string name="slot_3">Slot 3</string>
+    <string name="slot_4">Slot 4</string>
+    <string name="slot_5">Slot 5</string>
+    <string name="slot_6">Slot 6</string>
+    <string name="slot_7">Slot 7</string>
+    <string name="slot_8">Slot 8</string>
+    <string name="slot_9">Slot 9</string>
+    <string name="slot_10">Slot 10</string>
+    <string name="slot_11">Slot 11</string>
+    <string name="slot_12">Slot 12</string>
+    <string name="slot_13">Slot 13</string>
+    <string name="slot_14">Slot 14</string>
+    <string name="slot_15">Slot 15</string>
+    <string name="slot_16">Slot 16</string>
+    <string name="slot_17">Slot 17</string>
+    <string name="slot_18">Slot 18</string>
+    <string name="slot_19">Slot 19</string>
+    <string name="slot_20">Slot 20</string>
+    <string name="slot_21">Slot 21</string>
+    <string name="slot_22">Slot 22</string>
+    <string name="slot_23">Slot 23</string>
+    <string name="slot_24">Slot 24</string>
+
 </resources>
