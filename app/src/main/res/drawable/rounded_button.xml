@@ -1,0 +1,27 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Border Layer -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:startColor="#8D6E63"
+                android:centerColor="#A1887F"
+                android:endColor="#8D6E63"
+                android:angle="270" />
+            <corners android:radius="25dp" />
+        </shape>
+    </item>
+
+    <!-- Inner Button Layer -->
+    <item android:left="2dp" android:top="2dp" android:right="2dp" android:bottom="2dp">
+        <shape android:shape="rectangle">
+            <gradient
+                android:startColor="#D7B19D"
+                android:endColor="#AF7967"
+                android:angle="270" />
+            <corners android:radius="22dp" />
+            <padding android:left="10dp" android:top="10dp" android:right="10dp" android:bottom="10dp" />
+        </shape>
+    </item>
+
+</layer-list>

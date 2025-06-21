@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">BluetoothConnection</string>
+    <string name="app_name">CheckNet</string>
     <string name="list_listen_devices"><![CDATA[List & Listen Devices]]></string>
     <string name="slot_1">Slot 1</string>
     <string name="slot_2">Slot 2</string>

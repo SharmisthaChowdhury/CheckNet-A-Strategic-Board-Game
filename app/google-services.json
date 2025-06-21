@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "141565380175",
+    "project_id": "checknet-42298",
+    "storage_bucket": "checknet-42298.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:141565380175:android:3f652349820241ed284c3a",
+        "android_client_info": {
+          "package_name": "com.example.bluetoothconnection"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBS_wH564hFJ8-dq5tB_IZqnpxAOu1DChk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

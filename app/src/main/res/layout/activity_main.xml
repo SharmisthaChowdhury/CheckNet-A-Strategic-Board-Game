@@ -14,10 +14,11 @@
         tools:layout_editor_absoluteX="-150dp"
         tools:layout_editor_absoluteY="408dp">
 
+
         <ImageView
             android:layout_width="393dp"
             android:layout_height="107dp"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="24dp"
             android:background="@drawable/checknet"
             android:contentDescription="Go back"
             app:layout_constraintEnd_toEndOf="parent"
@@ -33,8 +34,6 @@
             android:background="#99A23E"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            android:layout_marginStart="3dp"
-            android:layout_marginEnd="3dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/listDevices" />
 
@@ -48,8 +47,24 @@
             android:text="List Devices"
             android:textColor="#5F4928"
             android:textSize="16sp"
+
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.072"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <ImageButton
+            android:id="@+id/music"
+            android:layout_width="51dp"
+            android:layout_height="51dp"
+            android:layout_marginTop="156dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="audio"
+            android:scaleType="fitCenter"
+            android:src="@drawable/audio_off"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.777"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -57,27 +72,20 @@
             android:id="@+id/help"
             android:layout_width="50dp"
             android:layout_height="50dp"
+            android:layout_marginTop="156dp"
             android:background="@drawable/help"
             android:contentDescription="Help"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.903"
+            app:layout_constraintHorizontal_bias="0.955"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.215" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/status"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="355dp"
+            android:layout_height="42dp"
             android:layout_marginTop="8dp"
-            android:layout_marginStart="14dp"
-            android:layout_marginEnd="14dp"
-            android:text="Connection Status: Not Connected"
             android:textStyle="italic"
-            android:textSize="16sp"
-            android:textColor="#E9E3E3"
-            android:gravity="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/listview" />
@@ -112,6 +120,19 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageButton
+            android:id="@+id/btn_switch_internet_mode"
+            android:layout_width="51dp"
+            android:layout_height="51dp"
+            android:layout_marginTop="156dp"
+            android:scaleType="fitCenter"
+            android:background="@drawable/wifi"
+            android:contentDescription="Switch to Internet Mode"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.576"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </RelativeLayout>

@@ -1,5 +1,4 @@
 package com.example.bluetoothconnection;
-
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -8,7 +7,9 @@ import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothServerSocket;
 import android.bluetooth.BluetoothSocket;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -19,6 +20,7 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -44,19 +46,34 @@ public class MainActivity2 extends AppCompatActivity {
     Button listDevices, playButton, rulesButton;
     ListView listView;
     TextView status;
-    ImageButton help;
+    ImageButton help, musicButton;
+
 
     BluetoothAdapter bluetoothAdapter;
     BluetoothDevice[] btArray;
+    private static MediaPlayer backgroundMusicPlayer;
+    private static boolean isMusicPlaying = false;
+
+    private boolean isConnectionInitiator = false;  // true = client; false = server
+
 
     @SuppressLint("MissingPermission")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         findViewByIdes();
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+
+        ImageButton switchInternetBtn = findViewById(R.id.btn_switch_internet_mode);
+        switchInternetBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity2.this, InternetGameActivity.class);
+                intent.putExtra("isFirstPlayer", false); // The receiver waits for their turn
+                startActivity(intent);
+            }
+        });
 
         // Check and request Bluetooth permissions
         checkBluetoothPermissions();
@@ -70,8 +87,20 @@ public class MainActivity2 extends AppCompatActivity {
 
         // Start the server to listen for incoming connections
         new ServerClass().start();
+        //startBackgroundMusic();
+        playButton.setEnabled(false);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if (isMusicPlaying) {
+            musicButton.setImageResource(R.drawable.audio_on);
+        } else {
+            musicButton.setImageResource(R.drawable.audio_off);
+        }
+    }
     private void findViewByIdes() {
         listView = findViewById(R.id.listview);
         status = findViewById(R.id.status);
@@ -79,6 +108,7 @@ public class MainActivity2 extends AppCompatActivity {
         playButton = findViewById(R.id.playButton);
         rulesButton = findViewById(R.id.rules);
         help = findViewById(R.id.help);
+        musicButton = findViewById(R.id.music);
     }
 
     private void checkBluetoothPermissions() {
@@ -95,6 +125,28 @@ public class MainActivity2 extends AppCompatActivity {
     }
 
     private void implementListeners() {
+        musicButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (backgroundMusicPlayer == null) {
+                    backgroundMusicPlayer = MediaPlayer.create(MainActivity2.this, R.raw.music); // Ensure the audio file is in res/raw
+                    backgroundMusicPlayer.setLooping(true);
+                }
+
+                if (isMusicPlaying) {
+                    backgroundMusicPlayer.pause();
+                    musicButton.setImageResource(R.drawable.audio_off); // "Off" icon
+                } else {
+                    backgroundMusicPlayer.start();
+                    musicButton.setImageResource(R.drawable.audio_on); // "On" icon
+                }
+                isMusicPlaying = !isMusicPlaying;
+            }
+
+        });
+
+
+
         listDevices.setOnClickListener(view -> {
             if (ContextCompat.checkSelfPermission(MainActivity2.this, Manifest.permission.BLUETOOTH_CONNECT) == PackageManager.PERMISSION_GRANTED) {
                 Set<BluetoothDevice> bt = bluetoothAdapter.getBondedDevices();
@@ -120,6 +172,13 @@ public class MainActivity2 extends AppCompatActivity {
             if (ContextCompat.checkSelfPermission(MainActivity2.this, Manifest.permission.BLUETOOTH_CONNECT) == PackageManager.PERMISSION_GRANTED) {
                 ClientClass clientClass = new ClientClass(btArray[i]);
                 clientClass.start();
+                isConnectionInitiator = true; // <-- Add this line
+
+                // ✅ Save the state so it's remembered even if activity restarts
+                getSharedPreferences("AppPrefs", MODE_PRIVATE)
+                        .edit()
+                        .putBoolean("isInitiator", true)
+                        .apply();
                 status.setText("Waiting for response from " + btArray[i].getName());
             } else {
                 Toast.makeText(MainActivity2.this, "Bluetooth permissions required", Toast.LENGTH_SHORT).show();
@@ -149,6 +208,17 @@ public class MainActivity2 extends AppCompatActivity {
 
 
     }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (backgroundMusicPlayer != null) {
+            if (backgroundMusicPlayer.isPlaying()) {
+                backgroundMusicPlayer.stop();
+            }
+            backgroundMusicPlayer.release();
+            backgroundMusicPlayer = null;
+        }
+    }
 
     Handler handler = new Handler(new Handler.Callback() {
         @Override
@@ -156,6 +226,15 @@ public class MainActivity2 extends AppCompatActivity {
             switch (msg.what) {
                 case STATE_CONNECTED:
                     status.setText("Connected and Ready to Play");
+                    // ✅ Retrieve shared preference value
+                    SharedPreferences prefs = getSharedPreferences("AppPrefs", MODE_PRIVATE);
+                    if (isConnectionInitiator) {
+                        playButton.setEnabled(true);
+                        playButton.setText("Start Game");
+                    } else {
+                        playButton.setEnabled(false);
+                        playButton.setText("Waiting...");
+                    }
                     break;
 
                 case STATE_CONNECTION_FAILED:
@@ -178,9 +257,36 @@ public class MainActivity2 extends AppCompatActivity {
                     if (receivedMessage.equals("CONNECTION_ESTABLISHED")) {
                         // Update the status on both devices
                         status.setText("Connected and Ready to Play");
+                        if (isConnectionInitiator) {
+                            playButton.setEnabled(true);
+                            playButton.setText("Start Game");
+                        } else {
+                            playButton.setEnabled(false);
+                            playButton.setText("Waiting...");
+                        }
                     } else if (receivedMessage.equals("GAME_START")) {
                         status.setText("Game starting in 5 seconds");
-                        startGameCountdown();
+
+                        final int[] countdown = {5};
+                        Handler countdownHandler = new Handler();
+
+                        Runnable countdownRunnable = new Runnable() {
+                            @Override
+                            public void run() {
+                                if (countdown[0] > 0) {
+                                    status.setText("Game starting in " + countdown[0] + " seconds");
+                                    countdown[0]--;
+                                    countdownHandler.postDelayed(this, 1000);
+                                } else {
+                                    status.setText("Starting the game...");
+                                    Intent intent = new Intent(MainActivity2.this, PlayActivity.class);
+                                    intent.putExtra("isFirstPlayer", false); // ✅ This device waits
+                                    startActivity(intent);
+                                }
+                            }
+                        };
+
+                        countdownHandler.post(countdownRunnable);
                     } else if (receivedMessage.equals("CONNECTION_DECLINED")) {
                         status.setText("Connection Declined by opponent.");
                     } else if (receivedMessage.equals("PLAY_REQUEST")) {
@@ -208,6 +314,8 @@ public class MainActivity2 extends AppCompatActivity {
                     // Countdown is over, start the game
                     status.setText("Starting the game...");
                     Intent intent = new Intent(MainActivity2.this, PlayActivity.class);
+                    intent.putExtra("isFirstPlayer", true); // ✅ This device plays first
+
                     startActivity(intent);
                 }
             }
@@ -227,6 +335,14 @@ public class MainActivity2 extends AppCompatActivity {
                 .setMessage("Do you want to play with " + socket.getRemoteDevice().getName() + "?")
                 .setPositiveButton("Accept", (dialog, which) -> {
                     try {
+                        isConnectionInitiator = false; // <-- This device is the server
+
+                        // ✅ Add this line to save the state
+                        getSharedPreferences("AppPrefs", MODE_PRIVATE)
+                                .edit()
+                                .putBoolean("isInitiator", false)
+                                .apply();
+
                         SendReceive sendReceive = new SendReceive(socket, handler);
                         BluetoothService.getInstance().setSendReceive(sendReceive);
                         sendReceive.start();
@@ -258,6 +374,14 @@ public class MainActivity2 extends AppCompatActivity {
                 })
                 .setCancelable(false)
                 .show();
+    }
+
+    public boolean isMusicPlaying() {
+        return isMusicPlaying;
+    }
+
+    public void setMusicPlaying(boolean musicPlaying) {
+        isMusicPlaying = musicPlaying;
     }
 
 

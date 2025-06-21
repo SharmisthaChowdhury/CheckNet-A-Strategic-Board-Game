@@ -1,0 +1,78 @@
+<HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/popup_bg"
+    android:padding="10dp"
+    android:fillViewport="true"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/emojiAngry"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/sticker_angry"
+            android:contentDescription="Angry" />
+
+        <ImageView
+            android:id="@+id/emojiSwag"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            android:src="@drawable/sticker_swag"
+            android:contentDescription="Swag" />
+
+        <ImageView
+            android:id="@+id/emojiSurprise"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            android:src="@drawable/sticker_surprise"
+            android:contentDescription="Surprise" />
+
+        <ImageView
+            android:id="@+id/emojiCry"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            android:src="@drawable/sticker_cry1"
+            android:contentDescription="Cry" />
+
+        <ImageView
+            android:id="@+id/emojiFunny"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            android:src="@drawable/sticker_funny"
+            android:contentDescription="Funny" />
+
+        <ImageView
+            android:id="@+id/emojiStock"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            android:src="@drawable/sticker_shock"
+            android:contentDescription="Shock" />
+
+        <ImageView
+            android:id="@+id/emojiLove"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            android:src="@drawable/sticker_love"
+            android:contentDescription="Love" />
+
+        <ImageView
+            android:id="@+id/emojiExcited"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            android:src="@drawable/sticker_excited"
+            android:contentDescription="Excited" />
+
+    </LinearLayout>
+</HorizontalScrollView>

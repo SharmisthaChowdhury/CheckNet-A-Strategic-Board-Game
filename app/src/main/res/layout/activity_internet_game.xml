@@ -1,0 +1,61 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background1">
+
+    <!-- Future Vision Label -->
+    <TextView
+        android:id="@+id/futureVisionLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="🌐 Internet Mode (Coming Soon)"
+        android:textColor="#FFF8E1"
+        android:textStyle="italic"
+        android:textSize="16sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="24dp"
+        android:layout_above="@id/createGameButton" />
+
+
+
+    <!-- Create Game Button -->
+    <Button
+        android:id="@+id/createGameButton"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:text="Create Game"
+        android:textSize="16sp"
+        android:textColor="#FFF8E1"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/rounded_button" />
+    <!-- Back Button -->
+    <ImageButton
+        android:id="@+id/back"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/back"
+        android:contentDescription="Back"
+        android:scaleType="fitCenter"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true" />
+
+
+    <!-- Join Game Button -->
+    <Button
+        android:id="@+id/joinGameButton"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:text="Join Game"
+        android:textSize="16sp"
+        android:textColor="#FFF8E1"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/createGameButton"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/rounded_button" />
+
+</RelativeLayout>

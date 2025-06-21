@@ -33,10 +33,12 @@ public class SendReceive extends Thread {
                 bytes = inputStream.read(buffer);
                 // Convert bytes to a string for processing
                 String receivedState = new String(buffer, 0, bytes);
-                // Notify PlayActivity if it's active
+
                 if (PlayActivity.activeInstance != null) {
                     PlayActivity.activeInstance.onOpponentMove(receivedState);
                 }
+
+
                 // Notify the handler (if used elsewhere in your app)
                 if (handler != null) {
                     handler.obtainMessage(MainActivity2.STATE_MESSAGE_RECEIVED, bytes, -1,

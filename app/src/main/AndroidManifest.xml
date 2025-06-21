@@ -4,10 +4,16 @@
     package="com.example.bluetoothconnection">
 
     <!-- Bluetooth Permissions -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
     <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <!-- Firebase Permissions (Ensure that you have added Firebase correctly) -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <application
         android:allowBackup="true"
@@ -23,16 +29,15 @@
             android:name=".PlayActivity"
             android:exported="true" />
 
-        <!-- MainActivity2 declaration (launcher activity) -->
-        <activity
-            android:name=".MainActivity2"
-            android:exported="true"
-            tools:ignore="MissingClass">
-            <intent-filter tools:ignore="DuplicateActivity">
+        <!-- MainActivity2 declaration (no longer launcher) -->
+        <activity android:name=".MainActivity2"
+            android:exported="true">
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
 
         <!-- RulesActivity declaration -->
         <activity
@@ -53,9 +58,21 @@
         <activity
             android:name=".Mill"
             android:exported="true" />
+
+        <!-- Help activity -->
         <activity
             android:name=".HelpActivity"
             android:exported="true" />
+
+
+        <!-- InternetGameActivity -->
+        <activity
+            android:name=".InternetGameActivity"
+            android:exported="true" />
+
+        <activity android:name=".MatchHistoryActivity"
+            android:exported="true"/>
+
 
     </application>
 

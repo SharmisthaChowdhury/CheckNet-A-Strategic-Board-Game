@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/gameResultLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:gravity="center"
+    android:background="@drawable/bg_wood_frame">
+
+    <!-- Trophy-->
+
+    <!-- Result Message -->
+    <ImageView
+        android:id="@+id/resultImage"
+        android:layout_width="173dp"
+        android:layout_height="168dp"
+        android:layout_marginBottom="16dp"
+        android:contentDescription="Result Image"
+        android:src="@drawable/trophy1" />
+
+    <TextView
+        android:id="@+id/resultText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="You Win!"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:fontFamily="serif"
+        android:textColor="#E3C28B"
+        android:layout_marginBottom="20dp" />
+
+    <!-- Player 1 Info -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="10dp">
+
+        <View
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/white_pawn"
+            android:layout_marginEnd="8dp" />
+
+        <TextView
+            android:id="@+id/player1Name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Player 1"
+            android:textColor="#E3C28B"
+            android:textSize="18sp"
+            android:fontFamily="serif" />
+
+        <TextView
+            android:id="@+id/player1Score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            android:textColor="#E3C28B"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- Player 2 Info -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="20dp">
+
+        <View
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/black_pawn"
+            android:layout_marginEnd="8dp" />
+
+        <TextView
+            android:id="@+id/player2Name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Player 2"
+            android:textColor="#E3C28B"
+            android:textSize="18sp"
+            android:fontFamily="serif" />
+
+        <TextView
+            android:id="@+id/player2Score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textColor="#E3C28B"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- Pawn Count -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginBottom="24dp">
+
+        <TextView
+            android:id="@+id/pawnCountText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="⚪ ⚪ ⚪"
+            android:textSize="18sp"
+            android:textColor="#E3C28B"
+            android:layout_marginEnd="24dp" />
+    </LinearLayout>
+
+    <!-- OK & View History Buttons side-by-side -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginBottom="12dp">
+
+        <Button
+            android:id="@+id/okButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="#5F4928"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:text="OK"
+            android:background="@drawable/button_bg"
+            android:layout_marginEnd="8dp" />
+
+        <Button
+            android:id="@+id/viewHistoryButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="View History"
+            android:gravity="center"
+            android:textColor="#5F4928"
+            android:textSize="16sp"
+            android:background="@drawable/button_bg"
+            android:layout_marginStart="8dp" />
+
+
+    </LinearLayout>
+
+    <!-- Share Result Button -->
+    <Button
+        android:id="@+id/shareButton"
+        android:layout_width="151dp"
+        android:layout_height="50dp"
+        android:background="@drawable/button_bg"
+        android:drawablePadding="8dp"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:text="Share"
+        android:gravity="center"
+        android:textColor="#5F4928"
+        android:textSize="16sp" />
+
+</LinearLayout>

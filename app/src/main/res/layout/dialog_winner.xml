@@ -1,33 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:padding="24dp"
-    android:background="@drawable/winner_bg"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:gravity="center"
+    android:background="@drawable/dialog_background">
 
     <ImageView
-        android:id="@+id/trophyImage"
-        android:layout_width="wrap_content"
-        android:layout_height="93dp"
+        android:id="@+id/resultImage"
+        android:layout_width="209dp"
+        android:layout_height="172dp"
         android:layout_marginBottom="16dp"
-        android:src="@drawable/trophy" />
+        android:contentDescription="Result Image"
+        android:scaleType="fitCenter"
+        />
 
     <TextView
-        android:id="@+id/winnerText"
-        android:text="You Win!"
-        android:textSize="24sp"
-        android:textColor="#FFD700"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:layout_marginBottom="24dp"
+        android:id="@+id/resultText"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:layout_gravity="center_horizontal"
+        android:text="You Win!"
+        android:textColor="@android:color/black"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        android:textAlignment="center" />
+
+
+    <TextView
+        android:id="@+id/scoreText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_gravity="center_horizontal"
+        android:text="You: 0\nOpponent: 0"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:textAlignment="center" />
+
 
     <Button
         android:id="@+id/okButton"
-        android:text="OK"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:text="OK"
+        android:background="@drawable/button_bg"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"/>
 </LinearLayout>
